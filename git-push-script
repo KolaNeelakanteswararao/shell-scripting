@@ -1,0 +1,13 @@
+#! /bin/bash
+
+for dir in `find . -type d -name .git | sed -e 's|/.git||'`; do
+	 echo "-------- $dir --------"
+	 cd $dir
+	 git pull
+	 git add -A
+	 git commit -m "updating $dir"
+	 git push
+   git push --tags
+	 cd ..
+
+done
