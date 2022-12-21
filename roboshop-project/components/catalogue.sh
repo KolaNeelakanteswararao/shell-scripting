@@ -1,5 +1,7 @@
+source components/common.sh
+
 echo "Set up NodeJs Repo"
-curl --silent --location https://rpm.nodesource.com/setup_16.x | sudo bash - &>>$LOG_FILE
+curl --silent --location https://rpm.nodesource.com/setup_16.x | sudo bash -  &>>$LOG_FILE
 
 echo "Installing NodeJs"
 yum install nodejs -y &>>$LOG_FILE
