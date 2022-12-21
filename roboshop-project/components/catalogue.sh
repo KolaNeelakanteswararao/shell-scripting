@@ -26,7 +26,7 @@ echo "install nodejs dependencies"
 cd /home/roboshop/catalogue &>>$LOG_FILE
 npm install -y &>>$LOG_FILE
 
-chown roboshop:robosop /home/roboshop -R
+chown roboshop:roboshop /home/roboshop -R
 
 echo "update systemD file"
 sed -i -e 's/MONGO_DNSNAME/mongodb.roboshop.internal/' /home/roboshop/catalogue/systemd.service &>>$LOG_FILE
