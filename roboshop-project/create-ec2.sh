@@ -28,7 +28,7 @@ if [ -z "${PRIVATE_IP}" ]; then
     exit
   fi
   aws ec2 run-instances --image-id ${AMI_ID} --instance-type t2.micro --output text --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=${INSTANCE_NAME}}]" "ResourceType=spot-instances-request,Tags=[{Key=Name,Value=${INSTANCE_NAME}}]" --instance-market-options "MarketType=spot,SpotOptions={InstanceInterruptionBehavior=stop,SpotInstanceType=persistent}" --security-group-ids &>>$LOG
-  echo -e "\e[1m Instance crated\e[0m"
+  echo -e "\e[1m Instance created\e[0m"
 else
   echo "Instance ${INSTANCE_NAME} is already exits,Hence not creating"
 fi
@@ -47,6 +47,6 @@ echo '{
 }}]
 }' | sed -e "s/DNSNAME/${INSTANCE_NAME}/" -e "s/IPADDRESS/${IPADDRESS}/" >/tmp/record.json
 
-ZONE_ID=$(aws route53 listed-hosted-zones --query "HostedZones[*].{name:Name,ID:Id}" --output text | grep roboshop.internal | awk '{print $1}' | awk '{print $3}')
+ZONE_ID=$(aws route53 list-hosted-zones --query "HostedZones[*].{name:Name,ID:Id}" --output text | grep roboshop.internal | awk '{print $1}' | awk '{print $3}')
 aws route53 change-resource-record-sets --hosted-zone-id $ZONE_ID --change-batch file:///tmp/record.json --output text &>>$LOG
-echo -e "\e[1m DNS record crated\e[0m"
+echo -e "\e[1m DNS record created\e[0m"
