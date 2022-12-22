@@ -19,7 +19,7 @@ else
    echo -e "\e[1;32mAMI_ID=${AMI_ID}\e[0m"
 fi
 
-PRIVATE_IP=$(aws ec2 describe-instances --filters "Name=tag:Name,Values=${INSTANCE_NAME}" --query 'Reservations[*].Instance[*].PrivateIpAddress' --output text)
+PRIVATE_IP=$(aws ec2 describe-instances --filters "Name=tag:Name,Values=${INSTANCE_NAME}" --query 'Reservations[*].Instances[*].PrivateIpAddress' --output text)
 
 if [ -z "${PRIVATE_IP}" ]; then
   SG_ID=$(aws ec2 describe-security-groups --filter Name=group-name,Values=allow-all --query "SecurityGroups[*].GroupId" --output text)
@@ -33,7 +33,7 @@ else
   echo "Instance ${INSTANCE_NAME} is already exits,Hence not creating"
 fi
 
-IPADDRESS=$(aws ec2 describe-instances --filters "Name=tag:Name,Values=${INSTANCE_NAME}" --query 'Reservations[*].Instance[*].PrivateIpAddress' --output text)
+IPADDRESS=$(aws ec2 describe-instances --filters "Name=tag:Name,Values=${INSTANCE_NAME}" --query 'Reservations[*].Instances[*].PrivateIpAddress' --output text)
 
 echo '{
                   "Comment": "CREATE/DELETE/UPSERT a record ",
