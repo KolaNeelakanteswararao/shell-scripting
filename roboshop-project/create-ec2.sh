@@ -22,7 +22,7 @@ fi
 PRIVATE_IP=$(aws ec2 describe-instances --filters "Name=tag:Name,Values=${INSTANCE_NAME}" --query 'Reservations[*].Instances[*].PrivateIpAddress' --output text)
 
 if [ -z "${PRIVATE_IP}" ]; then
-  SG_ID=$(aws ec2 describe-security-groups --filter "Name=group-name,Values=allow-all" --query "SecurityGroups[*].GroupId" --output text)
+  SG_ID=$(aws ec2 describe-security-groups --filters Name=group-name,Values=allow-all --query "SecurityGroups[*].GroupId" --output text)
   if [ -z "${SG_ID}" ]; then
     echo -e "\e[1;33m Security group allow-all does not exist\e[0m"
     exit
