@@ -27,7 +27,7 @@ if [ -z "${PRIVATE_IP}" ]; then
     echo -e "\e[1;33m Security group allow-all does not exist\e[0m"
     exit
   fi
-  aws ec2 run-instances --image-id ${AMI_ID} --instance-type t2.micro --output text --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=${INSTANCE_NAME}}]" "ResourceType=spot-instances-request,Tags=[{Key=Name,Value=${INSTANCE_NAME}}]" --instance-market-options "MarketType=spot,SpotOptions={InstanceInterruptionBehavior=stop,SpotInstanceType=persistent}" --security-group-ids &>>$LOG
+  aws ec2 run-instances --image-id ${AMI_ID} --instance-type t2.micro --output text --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=${INSTANCE_NAME}}]" "ResourceType=spot-instances-request,Tags=[{Key=Name,Value=${INSTANCE_NAME}}]" --instance-market-options "MarketType=spot,SpotOptions={InstanceInterruptionBehavior=stop,SpotInstanceType=Persistent}" --security-group-ids &>>$LOG
   echo -e "\e[1m Instance created\e[0m"
 else
   echo "Instance ${INSTANCE_NAME} is already exits,Hence not creating"
