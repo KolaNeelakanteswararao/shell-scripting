@@ -7,6 +7,6 @@ STAT() {
     echo -e "\e[1;32m Success\e[0m"
   else
     echo -e "\e[1;31m Failed\e[0m"
-    exit
+    exit 2
   fi
 }
