@@ -5,7 +5,7 @@ curl -s -o /etc/yum.repos.d/mongodb.repo https://raw.githubusercontent.com/robos
 STAT $?
 
 echo "Installing Mangodb"
-yum install mangodb-org -y &>>$LOG_FILE
+yum install mongodb-org -y &>>$LOG_FILE
 STAT $?
 
 echo "updating config file"
