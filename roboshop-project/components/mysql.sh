@@ -15,7 +15,7 @@ STAT $?
 
 DEFAULT_PASSWORD=$(grep 'temporary password' /var/log/mysqld.log | awk '{print $NF}') &>>$LOG_FILE
 echo "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('Roboshop@1');
-uninstall plugin validate_password;" >/tmp/pass.sql &>>$LOG_FILE
+uninstall plugin validate_password;" >/tmp/pass.sql
 
 echo "Change DEFAULT PASSWORD"
 echo 'show databases' | mysql -uroot -pRoboshop@1 &>>$LOG_FILE
