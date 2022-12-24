@@ -20,7 +20,7 @@ uninstall plugin validate_password;" >/tmp/pass.sql
 echo "Change DEFAULT PASSWORD"
 echo 'show databases;' | mysql -uroot -pRoboShop@1
 if [ $? -ne 0 ];then
-  mysql --YES -uroot -p"{$DEFAULT_PASSWORD}" </tmp/pass.sql &>>$LOG_FILE
+  mysql --connect-expired-password -uroot -p"{$DEFAULT_PASSWORD}" </tmp/pass.sql &>>$LOG_FILE
 fi
 STAT $?
 
