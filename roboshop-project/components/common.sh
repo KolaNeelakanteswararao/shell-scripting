@@ -1,6 +1,7 @@
 LOG_FILE=/tmp/roboshop.log
 
 rm -f $LOG_FILE
+rm -f /etc/yum.repos.d/endpoint.repo
 
 NODEJS() {
   COMPONENT=$1
