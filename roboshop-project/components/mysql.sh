@@ -34,5 +34,6 @@ unzip -o mysql.zip &>>$LOG_FILE
 STAT $?
 
 echo "Load Schema"
+cd /home/roboshop/mysql
 mysql -u root -pRoboshop@1 <mysql-main/shipping.sql &>>$LOG_FILE
 STAT $?
