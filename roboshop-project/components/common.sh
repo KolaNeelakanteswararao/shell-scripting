@@ -129,7 +129,7 @@ GOLANG() {
 
   echo "Build Golang code"
   cd /home/roboshop/${COMPONENT}
-  go mod init ${COMPONENT}
+  go mod init ${COMPONENT} &>>$LOG_FILE
   go get &>>$LOG_FILE
   go build &>>$LOG_FILE
   STAT $?
