@@ -105,7 +105,7 @@ PYTHON() {
   APP_USER_SETUP_WITH_APP
 
   echo "Install Python Dependencies for ${COMPONENT}"
-  cd /home/roboshop/{COMPONENT}
+  cd /home/roboshop/${COMPONENT}
   pip3 install -r requirements.txt &>>$LOG_FILE
   STAT $?
 
