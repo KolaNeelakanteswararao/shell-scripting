@@ -31,6 +31,7 @@ STAT $?
 echo "Extract shipping schema"
 cd /tmp
 unzip -o mysql.zip &>>$LOG_FILE
+cd mysql-main
 STAT $?
 
 echo "Load Schema"
