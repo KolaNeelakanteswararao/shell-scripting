@@ -120,7 +120,7 @@ PYTHON() {
 }
 
 GOLANG() {
-  COMPONENT $1
+  COMPONENT=$1
   echo "Installing Golang"
   yum install golang -y &>>$LOG_FILE
   STAT $?
