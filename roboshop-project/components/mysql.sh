@@ -35,5 +35,4 @@ STAT $?
 
 echo "Load Schema"
 mysql -u root -pRoboshop@1 &>>$LOG_FILE
-cd mysql-main &>>$LOG_FILE
 STAT $?
