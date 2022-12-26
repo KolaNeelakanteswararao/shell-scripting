@@ -13,8 +13,7 @@ sed -i -e 's/127.0.0.1/0.0.0.0/' /etc/mongod.conf &>>$LOG_FILE
 STAT $?
 
 echo "start the mongodb service"
-systemctl enable mongod &>>$LOG_FILE
-systemctl start mongod &>>$LOG_FILE
+systemctl enable mongod &>>$LOG_FILE && systemctl start mongod &>>$LOG_FILE
 STAT $?
 
 echo "download the schema"
@@ -28,6 +27,7 @@ STAT $?
 
 echo "to load other component service"
 cd mongodb-main
-mongo < catalogue.js &>>$LOG_FILE
-mongo < users.js &>>$LOG_FILE
+for app in catalogue users;do
+  mongo < ${app}.js &>>$LOG_FILE
+done
 STAT $?
