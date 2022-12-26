@@ -57,7 +57,7 @@ if [ "$1" == "list" ]; then
   aws ec2 describe-instances --query "Reservations[*].Instances[*].{PrivateIP:PrivateIpAddress,PublicIP:PublicIpAddress,Name:Tags[?Key=='Name']|[0].Value,Status:State.Name}" --output table
   exit
 elif [ "$1" == "all" ];then
-  for component in cart catalague dispatch frontend mongodb mysql payment rabbitmq redis shipping user;do
+  for component in cart catalogue dispatch frontend mongodb mysql payment rabbitmq redis shipping user;do
     INSTANCE_CREATE ${component}
   done
 else
